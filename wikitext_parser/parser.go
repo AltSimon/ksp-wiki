@@ -6,12 +6,15 @@ import (
 )
 
 func isCorrectHeadingSuffixSize(heading string, size int) bool {
-	return strings.HasSuffix(heading, strings.Repeat("=", size)) && !strings.HasSuffix(heading, strings.Repeat("=", size+1))
+	isCorrectPrefix := strings.HasPrefix(heading, strings.Repeat("=", size)) && !strings.HasPrefix(heading, strings.Repeat("=", size+1))
+	isCorrectSuffix := strings.HasSuffix(heading, strings.Repeat("=", size)) && !strings.HasSuffix(heading, strings.Repeat("=", size+1))
+	return isCorrectPrefix && isCorrectSuffix
 }
 
 func getHeadingNumber(heading string) int {
 	if !strings.HasPrefix(heading, "=") {
-		log.Fatal("not a heading")
+		log.Println("not a heading")
+		return -1
 	}
 	size := 0
 	for index, char := range heading {
@@ -21,7 +24,8 @@ func getHeadingNumber(heading string) int {
 		}
 	}
 	if !isCorrectHeadingSuffixSize(heading, size) {
-		log.Fatal("heading suffix is not the same as the prefix")
+		log.Println("heading suffix or prefix is not correct")
+		return -1
 	}
 	if size >= 6 {
 		log.Println("heading size is too small, using 6")
@@ -35,11 +39,12 @@ func HeadingToMarkdown(heading string) string {
 	prefix := strings.Repeat("=", size)
 	heading = strings.TrimPrefix(heading, prefix)
 	heading = strings.TrimSuffix(heading, prefix)
+	heading = strings.TrimSpace(heading)
 	line := ""
 	if size <= 2 {
 		line = "\n---"
 	}
-	return strings.Repeat("#", size) + heading + line
+	return strings.Repeat("#", size) + " " + heading + line
 }
 
 // TODO: Tests !!!
