@@ -82,3 +82,12 @@ func TestHeadingToMarkdown(t *testing.T) {
 		t.Errorf("HeadingToMarkdown(%q) = %v, wants %v", heading, value, wants)
 	}
 }
+
+func TestBigHeadingToMarkdown(t *testing.T) {
+	heading := "== Heading 2 =="
+	value := HeadingToMarkdown(heading)
+	wants := "## Heading 2\n---"
+	if value != wants {
+		t.Errorf("HeadingToMarkdown(%q) = %v, wants %v", heading, value, wants)
+	}
+}
