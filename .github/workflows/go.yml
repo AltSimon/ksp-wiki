@@ -25,13 +25,10 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y \
-          libx11-dev \
-          libxcursor-dev \
-          libxrandr-dev \
-          libxinerama-dev \
-          libxi-dev \
+          xserver-xorg-dev \
           libgl1-mesa-dev \
           xvfb
+
 
 
     - name: Build
