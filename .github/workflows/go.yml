@@ -30,8 +30,10 @@ jobs:
           libxrandr-dev \
           libxinerama-dev \
           libxi-dev \
+          libxxf86vm-dev \ 
           libgl1-mesa-dev \
           xvfb
+
 
     - name: Build
       run: xvfb-run go build -v ./...
