@@ -5,12 +5,14 @@ import (
 	"strings"
 )
 
+// Checks if the heading provided is using symmetrical prefix and suffix of size provided
 func isCorrectHeadingSuffixSize(heading string, size int) bool {
 	isCorrectPrefix := strings.HasPrefix(heading, strings.Repeat("=", size)) && !strings.HasPrefix(heading, strings.Repeat("=", size+1))
 	isCorrectSuffix := strings.HasSuffix(heading, strings.Repeat("=", size)) && !strings.HasSuffix(heading, strings.Repeat("=", size+1))
 	return isCorrectPrefix && isCorrectSuffix
 }
 
+// Gets the size of the heading provided, e.g. == Heading == will be 2
 func getHeadingNumber(heading string) int {
 	if !strings.HasPrefix(heading, "=") {
 		log.Println("not a heading")
@@ -34,6 +36,7 @@ func getHeadingNumber(heading string) int {
 	return size
 }
 
+// Transforms a wikitext heading to a markdown heading
 func HeadingToMarkdown(heading string) string {
 	size := getHeadingNumber(heading)
 	prefix := strings.Repeat("=", size)
