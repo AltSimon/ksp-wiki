@@ -18,10 +18,6 @@ func Parse(lines []string) []string {
 	return result
 }
 
-func isHeading(word string) bool {
-	return strings.HasPrefix(word, "=")
-}
-
 // Checks if the heading provided is using symmetrical prefix and suffix of size provided
 func isCorrectHeadingSuffixSize(heading string, size int) bool {
 	isCorrectPrefix := strings.HasPrefix(heading, strings.Repeat("=", size)) && !strings.HasPrefix(heading, strings.Repeat("=", size+1))
