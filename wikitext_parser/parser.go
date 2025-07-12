@@ -5,6 +5,23 @@ import (
 	"strings"
 )
 
+// Parses wikitext to markdown
+func Parse(lines []string) []string {
+	result := []string{}
+	for _, line := range lines {
+		first_character := line[0]
+		switch first_character {
+		case '=':
+			result = append(result, HeadingToMarkdown(line))
+		}
+	}
+	return result
+}
+
+func isHeading(word string) bool {
+	return strings.HasPrefix(word, "=")
+}
+
 // Checks if the heading provided is using symmetrical prefix and suffix of size provided
 func isCorrectHeadingSuffixSize(heading string, size int) bool {
 	isCorrectPrefix := strings.HasPrefix(heading, strings.Repeat("=", size)) && !strings.HasPrefix(heading, strings.Repeat("=", size+1))
@@ -49,5 +66,3 @@ func HeadingToMarkdown(heading string) string {
 	}
 	return strings.Repeat("#", size) + " " + heading + line
 }
-
-// TODO: Tests !!!

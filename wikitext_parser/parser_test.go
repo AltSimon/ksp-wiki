@@ -1,6 +1,9 @@
 package wikitext_parser
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestSymmetricalHeading(t *testing.T) {
 	heading := "=== Heading 3 ==="
@@ -89,5 +92,14 @@ func TestBigHeadingToMarkdown(t *testing.T) {
 	wants := "## Heading 2\n---"
 	if value != wants {
 		t.Errorf("HeadingToMarkdown(%q) = %v, wants %v", heading, value, wants)
+	}
+}
+
+func TestParseHeading(t *testing.T) {
+	lines := []string{"==A heading 2 =="}
+	value := Parse(lines)
+	wants := []string{"## A heading 2\n---"}
+	if !reflect.DeepEqual(wants, value) {
+		t.Errorf("Parse([]string{\"==A heading 2 ==\"}) = %v, but wants %v", value, wants)
 	}
 }
