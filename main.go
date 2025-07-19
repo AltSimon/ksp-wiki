@@ -36,6 +36,7 @@ func mainWikiPage(url string) *container.TabItem {
 func main() {
 	a := app.New()
 	w := a.NewWindow("Hello, world")
+	
 
 	w.ShowAndRun()
 }

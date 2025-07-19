@@ -7,6 +7,8 @@ require fyne.io/fyne/v2 v2.6.1
 require (
 	fyne.io/systray v1.11.0 // indirect
 	github.com/BurntSushi/toml v1.5.0 // indirect
+	github.com/JohannesKaufmann/dom v0.2.0 // indirect
+	github.com/JohannesKaufmann/html-to-markdown/v2 v2.3.3 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fredbi/uri v1.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
@@ -32,8 +34,8 @@ require (
 	github.com/stretchr/testify v1.10.0 // indirect
 	github.com/yuin/goldmark v1.7.12 // indirect
 	golang.org/x/image v0.28.0 // indirect
-	golang.org/x/net v0.41.0 // indirect
-	golang.org/x/sys v0.33.0 // indirect
-	golang.org/x/text v0.26.0 // indirect
+	golang.org/x/net v0.42.0 // indirect
+	golang.org/x/sys v0.34.0 // indirect
+	golang.org/x/text v0.27.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

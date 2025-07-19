@@ -3,6 +3,9 @@ package wikitext_parser
 import (
 	"log"
 	"strings"
+
+	htmltomarkdown "github.com/JohannesKaufmann/html-to-markdown/v2"
+	"github.com/JohannesKaufmann/html-to-markdown/v2/converter"
 )
 
 // Parses wikitext to markdown
@@ -16,6 +19,15 @@ func Parse(lines []string) []string {
 		}
 	}
 	return result
+}
+
+func ParseHTML(htmlText string) string {
+	markdown, err := htmltomarkdown.ConvertString(htmlText, converter.WithDomain("https://wiki.kerbalspaceprogram.com"))
+	if err != nil {
+		log.Println(err)
+		return "HTML Parsing error"
+	}
+	return markdown
 }
 
 // Checks if the heading provided is using symmetrical prefix and suffix of size provided
